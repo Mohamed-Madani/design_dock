@@ -1,0 +1,17 @@
+meta {
+  name: Delete category
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:3000/api/categories/cm43dlvm500003ubt0drtmxlw
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Typography"
+  }
+}

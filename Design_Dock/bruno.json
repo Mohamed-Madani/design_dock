@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Design_Dock",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 // Declare a variable to hold the PrismaClient instance
-let prisma;
+let prisma: PrismaClient;
 
 // Initialize PrismaClient based on the environment
 if (process.env.NODE_ENV !== "production") {

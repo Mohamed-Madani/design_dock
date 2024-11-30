@@ -15,9 +15,11 @@ datasource db {
 }
 
 model Resource {
-  id          String   @id @default(cuid())
+  id          String   @id @default(uuid())
   title       String
   url         String
+  imageUrl    String   // URL de l'image associée à ce contenu
+  description String?  // Optionnel : une brève description du contenu
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
   createdAt   DateTime @default(now())
@@ -40,6 +42,6 @@ model Suggestion {
   id        String   @id @default(cuid())
   email     String
   url       String
-  status    String   @default("pending")
+  status    String?   @default("pending")
   createdAt DateTime @default(now())
 }

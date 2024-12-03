@@ -1,6 +1,10 @@
 import prisma from "@/lib";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
+const categorySchema = z.object({
+    name: z.string().min(1, "Le nom de la catégorie est obligatoire."),
+  });
 // This file handles API routes for individual category operations
 // The [id] in the folder name is used as a dynamic route parameter
 
@@ -25,9 +29,10 @@ export async function PUT(request: Request, {params}: {params: {id: string}}) {
   try {
       const id = params.id;
       const json = await request.json();
+      const validatedData = categorySchema.parse(json);
     const updated = await prisma.category.update({
       where: {id: id},
-      data: json
+      data: validatedData
     });
     return NextResponse.json(updated);
   } catch (error) {

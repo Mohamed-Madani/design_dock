@@ -26,12 +26,12 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     const validatedData = categorySchema.parse(json);
-    const created = await prisma.category.create({
+    const newCategory = await prisma.category.create({
       data: {
         name: validatedData.name,
       },
     });
-    return NextResponse.json(created);
+    return NextResponse.json(newCategory);
   } catch (error) {
     if (error instanceof z.ZodError) {
       // Gestion des erreurs de validation Zod
